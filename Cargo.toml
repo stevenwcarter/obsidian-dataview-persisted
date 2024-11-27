@@ -1,0 +1,34 @@
+[package]
+name = "dv-persisted"
+path = "rs-src"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "dv-persisted"
+path = "rs-src/main.rs"
+
+[lib]
+crate-type = ["cdylib"]
+path = "rs-src/lib.rs"
+
+[profile.release]
+lto = true
+
+[features]
+# default = ["wee_alloc"]
+
+[dependencies]
+wasm-bindgen = "0.2.95"
+wee_alloc = { version = "0.4.2", optional = true }
+
+[dependencies.web-sys]
+features = ["console"]
+version = "0.3.22"
+
+# These crates are used for running unit tests.
+[dev-dependencies]
+futures = "0.3.31"
+js-sys = "0.3.72"
+wasm-bindgen-futures = "0.4.45"
+wasm-bindgen-test = "0.3.45"
